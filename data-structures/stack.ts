@@ -3,13 +3,19 @@ import { LinkedList } from './linked-list';
 export class Stack<T> {
 	private list: LinkedList<T>;
 
-	size() {}
+	size(): number {
+		return this.list.size();
+	}
 
-	isEmpty() {}
+	isEmpty(): boolean {
+		return this.list.isEmpty();
+	}
 
 	clear() {}
 
-	push() {}
+	push(value: T): boolean {
+    return this.list.addAtTail(value);
+  }
 
 	pop() {}
 
