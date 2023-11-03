@@ -16,7 +16,7 @@ interface List<T> {
 	length: number;
 }
 
-class LinkedList<T> {
+export class LinkedList<T> {
 	private list: List<T> | undefined;
 
 	constructor() {
