@@ -10,38 +10,121 @@ class LinkedListNode<ValueType> {
 	}
 }
 
+interface List<T> {
+	head: LinkedListNode<T>;
+	tail: LinkedListNode<T>;
+	length: number;
+}
+
 class LinkedList<T> {
-	private head: LinkedListNode<T> | undefined;
-	private tail: LinkedListNode<T> | undefined;
-	private length: number;
+	private list: List<T> | undefined;
 
 	constructor() {
-		this.head = undefined;
-		this.tail = undefined;
-		this.length = 0;
+		this.list = undefined;
 	}
 
 	public size(): number {
-		return this.length;
+		if (this.list) return this.list.length;
+
+		return 0;
 	}
 
 	public isEmpty(): boolean {
-		return this.length === 0;
+		return !this.list;
 	}
 
-  // TODO
+	addAtHead(value: T): boolean {
+		const newNode = new LinkedListNode(value);
 
-	addAtHead() {}
+		if (this.list) {
+			this.list.head.prev = newNode;
+			newNode.next = this.list.head;
 
-	addAtTail() {}
+			this.list.head = newNode;
+			this.list.length++;
+		} else {
+			this.list = {
+				head: newNode,
+				tail: newNode,
+				length: 1,
+			};
+		}
 
-	addAt() {}
+		return true;
+	}
 
-	peakHead() {}
+	addAtTail(value: T): boolean {
+		const newNode = new LinkedListNode(value);
 
-	peakTail() {}
+		if (this.list) {
+			this.list.tail.next = newNode;
+			newNode.prev = this.list.tail;
 
-	getAtIndex() {}
+			this.list.tail = newNode;
+			this.list.length++;
+		} else {
+			this.list = {
+				head: newNode,
+				tail: newNode,
+				length: 1,
+			};
+		}
 
-	printList() {}
+		return true;
+	}
+
+	addAt(value: T, idx: number): boolean {
+		// if (idx < 0 || idx > this.size() || !this.list) return false;
+
+		// const newNode = new LinkedListNode(value);
+
+		// let current = this.list.head;
+
+		// for (let i = 0; i < idx; i++) {
+		// 	current = current.next!;
+		// }
+
+		// return true;
+		throw new Error('Method not implemented.');
+	}
+
+	removeAtHead(): boolean {
+		throw new Error('Method not implemented.');
+	}
+
+	removeAtTail(): boolean {
+		throw new Error('Method not implemented.');
+	}
+
+	removeAt(idx: number): boolean {
+		throw new Error('Method not implemented.');
+	}
+
+	peakHead(): T | null {
+		if (!this.list) return null;
+
+		return this.list.head.value;
+	}
+
+	peakTail(): T | null {
+		if (!this.list) return null;
+
+		return this.list.tail.value;
+	}
+
+	getAtIndex(idx: number): T | null {
+		if (idx < 0 || idx >= this.size() || !this.list) return null;
+
+		let current = this.list.head;
+
+		for (let i = 0; i < idx; i++) {
+			current = current.next!;
+		}
+
+		return current.value;
+	}
+
+	printList() {
+		throw new Error('Method not implemented.');
+	}
 }
