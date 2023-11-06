@@ -1,5 +1,5 @@
 import { it, describe, beforeEach, expect } from 'vitest';
-import { Queue } from './queue';
+import { Queue } from '../queue';
 
 describe('Queue', () => {
 	let queue: Queue<number>;
