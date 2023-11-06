@@ -166,8 +166,10 @@ export class LinkedList<T> {
 		let current = this.list.head;
 
 		while (current) {
-			if (current.next && !current.next.next) {
+			if (!current.next) {
 				printStr += `${current.value}`;
+
+				break;
 			}
 
 			printStr += `${current.value} - `;
