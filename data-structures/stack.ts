@@ -3,6 +3,10 @@ import { LinkedList } from './linked-list';
 export class Stack<T> {
 	private list: LinkedList<T>;
 
+	constructor() {
+		this.list = new LinkedList();
+	}
+
 	size(): number {
 		return this.list.size();
 	}
@@ -11,15 +15,27 @@ export class Stack<T> {
 		return this.list.isEmpty();
 	}
 
-	clear() {}
+	clear(): void {
+		this.list.clear();
+	}
 
 	push(value: T): boolean {
-    return this.list.addAtTail(value);
-  }
+		return this.list.addAtTail(value);
+	}
 
-	pop() {}
+	pop(): T | null {
+		if (this.isEmpty()) return null;
 
-	peek() {}
+		return this.list.removeAtTail();
+	}
 
-	contains() {}
+	peek(): T | null {
+		if (this.isEmpty()) return null;
+
+		return this.list.peakTail();
+	}
+
+	contains(value: T): boolean {
+		return this.list.contains(value);
+	}
 }
