@@ -158,6 +158,20 @@ export class LinkedList<T> {
 		return current.value;
 	}
 
+	contains(value: T): boolean {
+		if (!this.list) return false;
+
+		let current = this.list.head;
+
+		while (current) {
+			if (current.value === value) return true;
+
+			current = current.next!;
+		}
+
+		return false;
+	}
+
 	printList(): string | null {
 		if (!this.list) {
 			console.log('Empty list');
