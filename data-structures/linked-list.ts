@@ -88,12 +88,42 @@ export class LinkedList<T> {
 		throw new Error('Method not implemented.');
 	}
 
-	removeAtHead(): boolean {
-		throw new Error('Method not implemented.');
+	removeAtHead(): T | null {
+		if (!this.list) return null;
+
+		const head = this.list.head.value;
+
+		if (this.size() <= 1) {
+			this.list = undefined;
+
+			return head;
+		}
+
+		this.list.head.next!.prev = null;
+		this.list.head = this.list.head.next!;
+
+		this.list.length--;
+
+		return head;
 	}
 
-	removeAtTail(): boolean {
-		throw new Error('Method not implemented.');
+	removeAtTail(): T | null {
+		if (!this.list) return null;
+
+		const tail = this.list.tail.value;
+
+		if (this.size() <= 1) {
+			this.list = undefined;
+
+			return tail;
+		}
+
+		this.list.tail.prev!.next = null;
+		this.list.tail = this.list.tail.prev!;
+
+		this.list.length--;
+
+		return tail;
 	}
 
 	removeAt(idx: number): boolean {
@@ -124,7 +154,28 @@ export class LinkedList<T> {
 		return current.value;
 	}
 
-	printList() {
-		throw new Error('Method not implemented.');
+	printList(): string | null {
+		if (!this.list) {
+			console.log('Empty list');
+
+			return null;
+		}
+
+		let printStr = '';
+
+		let current = this.list.head;
+
+		while (current) {
+			if (current.next && !current.next.next) {
+				printStr += `${current.value}`;
+			}
+
+			printStr += `${current.value} - `;
+			current = current.next!;
+		}
+
+		console.log(printStr);
+
+		return printStr;
 	}
 }
