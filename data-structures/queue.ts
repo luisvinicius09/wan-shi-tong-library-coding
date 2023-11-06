@@ -1,17 +1,47 @@
+import { LinkedList } from './linked-list';
+
 export class Queue<T> {
-	size() {}
+	private list: LinkedList<T>;
 
-	itEmpty() {}
+	constructor() {
+		this.list = new LinkedList();
+	}
 
-	clear() {}
+	size(): number {
+		return this.list.size();
+	}
 
-	enqueue() {}
+	isEmpty(): boolean {
+		return this.list.isEmpty();
+	}
 
-	dequeue() {}
+	clear(): void {
+		this.list.clear();
+	}
 
-	peekFront() {}
+	enqueue(value: T): void {
+		this.list.addAtHead(value);
+	}
 
-	peekBack() {}
+	dequeue(): T | null {
+		if (this.isEmpty()) return null;
 
-	contains() {}
+		return this.list.removeAtTail();
+	}
+
+	peekFront(): T | null {
+		if (this.isEmpty()) return null;
+
+		return this.list.peakHead();
+	}
+
+	peekBack(): T | null {
+		if (this.isEmpty()) return null;
+
+		return this.list.peakTail();
+	}
+
+	contains(value: T): boolean {
+		return this.list.contains(value);
+	}
 }
