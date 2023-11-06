@@ -23,6 +23,10 @@ export class LinkedList<T> {
 		this.list = undefined;
 	}
 
+	public clear(): void {
+		this.list = undefined;
+	}
+
 	public size(): number {
 		if (this.list) return this.list.length;
 
