@@ -1,5 +1,3 @@
 ## Wan Shi Tong's Library
 
-Wan Shi Tong is the spirit of knowledge.
-It appears in Avatar: The Last Airbender season two and inspired my collection of random notes.
-This repo is a collection of coding that will be referenced in my library.
+<img width="333" height="250" alt="image" src="https://github.com/user-attachments/assets/2a7f9122-df07-4139-802e-40a1f0188d1b" />
